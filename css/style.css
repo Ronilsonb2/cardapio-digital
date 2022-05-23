@@ -155,6 +155,19 @@ img{
     top: 0;
 }
 
+.fazer-pedido button {
+    padding: 7px 11px;
+    border-radius: 10px 10px 0px 0px;
+    background: #1a3c40;
+    position: fixed;
+    top: 50%;
+    color: #fdfdd5;
+    margin-left: -48px;
+    transform: rotate(90deg);
+    border-color: #fdfdd5;
+    font-weight: bold;
+}
+
 /* .semanais{
     padding: 30px 10px 20px;
     display: grid;

@@ -1,0 +1,225 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    /* outline: 1px solid black; */
+    list-style: none;
+}
+
+img{
+    display: block;
+    margin: 0 auto;
+}
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ======HEADER ========*/
+.header{
+    position: fixed;
+    top: 0;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    background-color: #1a3c40;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100px;
+    height: 150px;
+}
+.logo{
+   padding: 10px; 
+}
+.logo img{
+    width: 100%;
+    max-width: 120px;
+}
+.menu-nav h1{
+    color: #fdfdd5;
+    text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, -13px 3px 1px rgba(253,253,213,0.07);
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'Lobster', cursive;
+}
+.nav-bar{
+    display: none;
+}
+.menu-nav{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.menu-nav ul{
+    margin: 0 auto;
+    display: flex;
+    padding: 0 0 5px;
+}
+.menu-nav ul li{
+    color: #fdfdd5;
+    font-family: 'Lobster', cursive;
+    padding: 10px 5px 0;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.menu-nav ul li:hover{
+    border-bottom: 2px solid #fdfdd5;
+}
+
+.footer{
+    color: #fdfdd5;
+    background-color: #1a3c40;
+    text-align: center;
+    padding: 20px 0 40px;
+}
+
+.footer p{
+    font-size: 2rem;
+    font-family: 'Lobster', cursive;
+}
+
+/* ======OFERTAS ========*/
+
+
+.grid{
+    margin-top: 150px;
+    padding: 10px 10px;
+    background-color: #55D8C1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+.grid .box {
+    height: 250px;
+    background-color: #AC7D88;
+    padding: 5px;
+    border-radius: 3px;
+    text-align: center;
+    color: #fdfdd5;
+}
+
+.pratos img{
+    width: 100%;
+    max-width: 300px;
+}
+
+.descritivo{
+    padding: 7px 10px 0;
+}
+
+.descritivo strong{
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.descritivo p{
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.semanais{
+    color: #fdfdd5;
+    text-align: center;
+    overflow: hidden;
+}
+
+.semanais h1{
+    padding: 10px 10px 20px;
+    background-color: #1A3C40;
+    font-family: 'Lobster', cursive;
+}
+.destaques{
+    width: 100%;
+    min-height: 260px;
+    display: flex;
+    padding: 10px 5px;
+    background-color: #55D8C1;
+    flex-direction: row;
+    overflow: auto;
+}
+
+.destaques .box{
+    background-color: #AC7D88;
+    margin: 0 5px;
+    height: auto;
+    width: 260px;
+    flex-shrink: 0;
+    object-fit: cover;
+    position: sticky;
+    top: 0;
+}
+
+/* .semanais{
+    padding: 30px 10px 20px;
+    display: grid;
+    grid-template-columns: 30% 30%;
+} */
+.semanais h1{
+    grid-column: 1 / span 2;
+}
+
+
+@media (max-width: 800px){
+   .header{
+       display: block;
+       height: auto;
+   }
+   ._open{
+       display: block !important;
+   }
+   .menu-nav{
+       z-index: 999;
+       padding: 10px 10px;
+   }
+   .menu-nav h1{
+       font-size: 2rem;
+       text-align: left;
+   }
+   .menu-nav ul{
+       display: none;
+       padding-top: 10px;
+       margin: 0;
+   }
+   .nav-bar{
+       margin-top: 6px;
+       position: absolute;
+       right: 10px;
+       display: block;
+       width: 40px;
+       height: auto;
+       background-color: transparent;
+   }
+   .line{
+       margin: 7px 0;
+       width: 40px;
+       height: 4px;
+       display: block;
+       background-color: #fdfdd5;
+   }
+   .footer p {
+        font-size: 1.5rem;
+    }
+
+
+    /* ======OFERTAS ========*/
+
+
+    .grid{
+        margin-top: 210px;
+        display: block;
+    }
+    .grid .box {
+        height: auto;
+        min-height: 200px;
+        margin-bottom: 10px;
+    }
+    .descritivo {
+        padding: 7px 25px 0;
+    }
+}

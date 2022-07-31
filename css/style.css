@@ -151,7 +151,7 @@ img{
 
 .title_sessoes h1{
     color: #fdfdd5;
-    background-image: url('/assets/base_title2.png');
+    background-image: url('../assets/base_title2.png');
     background-repeat: no-repeat;
     padding: 10px 10px 20px;
     font-size: 30px;

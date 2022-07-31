@@ -1,4 +1,9 @@
 
+let headerHeight = document.querySelector(".header").clientHeight;
+console.log(`${headerHeight}px`);
+
+document.querySelector(".conteudo").style.marginTop = `${headerHeight}px`;
+
  let incluirIdsUnicos = [];
  const salvarId = [];
  const pedidos= [];
@@ -44,6 +49,7 @@ function definirQuantidade(value_data_incremento, cta_name){
 function abrirModal() {
 
         if(incluirIdsUnicos.size > 0) {
+
             incluirIdsUnicos.forEach(function(value) {
 
                 let img = document.querySelector(`${value} .pratos`).innerHTML;

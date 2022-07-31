@@ -98,10 +98,44 @@ let dados_cardapio = [
             preco: "69,90"
         }
       ]
+    },
+    {
+      "categ": "sobremesas",
+      "pratos": [
+        {
+            nome: "Frozen Yogurt",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+            imagem: "assets/prato1.jpg",
+            preco: "19,90"
+        },
+        {
+            nome: "Suflê de Banana e Canela",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+            imagem: "assets/prato2.jpg",
+            preco: "19,90"
+        },
+        {
+            nome: "Mousse de Chocolate Light",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+            imagem: "assets/prato3.jpg",
+            preco: "24,90"
+        },
+        {
+            nome: "Petit Gâteau Tradicional",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+            imagem: "assets/prato1.jpg",
+            preco: "29,90"
+        },
+        {
+            nome: "Crème Brûlée",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+            imagem: "assets/prato2.jpg",
+            preco: "9,90"
+        }
+      ]
     }
   ];
   
-
 let array_pratos;
 let prod;
 let aux= [];
@@ -112,14 +146,13 @@ for(i in dados_cardapio) {
     // console.log(prod.categ, prod.pratos);
     // console.log("total de elementos: "+prod.pratos.length);
 
-
     let num_id;
 
     let num = 1;
     
     array_pratos = (prod.categ, prod.pratos);
     
-    if(prod.categ == 'ofertas_do_dia'){
+    if((prod.categ == 'ofertas_do_dia') && (prod.pratos.length > 0)){
         
         for(e in prod.pratos){
 
@@ -143,15 +176,13 @@ for(i in dados_cardapio) {
             num++;
         }
         
-        
-
         // console.log("va;or de num id " + num_id);
     }
 
-    if(prod.categ == 'semanais'){
+    if((prod.categ == 'semanais') && (prod.pratos.length > 0)){
 
-        let title = `<h1>Pratos diarios</h1><div class="destaques"  id="pratos_diarios"></div>`;
-        document.querySelector('#semanais').innerHTML += title;
+        let title_diarios = `<h1>Pratos diários</h1><div class="destaques"  id="pratos_diarios"></div>`;
+        document.querySelector('#semanais').innerHTML += title_diarios;
 
         for(x in prod.pratos){
             let conteudo = `
@@ -175,4 +206,30 @@ for(i in dados_cardapio) {
         }
     }
 
+    if((prod.categ == 'sobremesas') && (prod.pratos.length > 0)){
+
+        let title_sobremesas = `<h1>Sobremesas</h1><div class="grid sobremesas"  id="sobremesas"></div>`;
+        document.querySelector('.sobremesas').innerHTML += title_sobremesas;
+
+        for(y in prod.pratos){
+            let conteudo = `
+                <div class="box" id="sobremesas-${num}">
+                    <div class="pratos">
+                        <img src="${prod.pratos[y].imagem}" alt="">
+                    </div>
+                    <div class="info-pratos">
+                        <h3 class="title">${prod.pratos[y].nome}</h3>
+                        <p class="descritivo">${prod.pratos[y].descricao}</p>
+                        <p class="price">R$ <span>${prod.pratos[y].preco}</span></p>
+                    </div>
+                    <div class="seleciona-qtd seleciona_qtd_geral">
+                        <button onclick="escolherItens(this)" data-incremento="#sobremesas-${num}" name="btn-qtd-menos" class="btn-qtd btn-qtd-menos">-</button>
+                        <input type="text" name="quantidade" value="0" class="gtd-pedido">
+                        <button onclick="escolherItens(this)" data-incremento="#sobremesas-${num}" name="btn-qtd-mais" class="btn-qtd btn-qtd-mais">+</button>
+                    </div>
+                </div>`;
+            document.querySelector('#sobremesas').innerHTML += conteudo;
+            num++;
+        }
+    }
 }

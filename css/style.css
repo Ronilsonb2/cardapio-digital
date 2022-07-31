@@ -16,7 +16,7 @@ img{
 .container{
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -25,10 +25,11 @@ img{
     position: fixed;
     top: 0;
     display: grid;
+    align-items: center;
     grid-template-columns: 20% 80%;
     background-color: #1a3c40;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     min-height: 100px;
     height: 150px;
     z-index: 999;
@@ -85,10 +86,12 @@ img{
 
 /* ======OFERTAS ========*/
 
+/* .conteudo{
+    margin-top: 150px;
+} */
 
 .grid{
-    margin-top: 150px;
-    padding: 10px 10px 20px;
+    padding: 10px 10px 50px;
     background-color: #fff;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -114,7 +117,7 @@ img{
 }
 
 .info-pratos{
-    padding: 7px 10px 0;
+    padding: 7px 5px 0;
 }
 
 .title{
@@ -139,17 +142,23 @@ img{
     margin-top: 10px;
 }
 
-.semanais{
+#semanais {
+    display: block;
     color: #fdfdd5;
     text-align: center;
     overflow: hidden;
 }
 
-.semanais h1{
+.title_sessoes h1{
+    color: #fdfdd5;
+    background-image: url('/assets/base_title2.png');
+    background-repeat: no-repeat;
     padding: 10px 10px 20px;
-    background-color: #1A3C40;
+    font-size: 30px;
+    text-align: left;
     font-family: 'Lobster', cursive;
 }
+
 .destaques{
     width: 100%;
     min-height: 260px;
@@ -387,8 +396,8 @@ img{
 
 
     .grid{
-        margin-top: 210px;
         grid-template-columns: 1fr 1fr;
+        gap: 10px 20px;
     }
     .grid .box {
         height: auto;
@@ -426,14 +435,41 @@ img{
         max-height: none;
     }
 
+    .title_sessoes h1{
+        background-size: 50% 129%;
+        font-size: 24px;
+    }
+
     .pratos img{
         max-width: none;
+    }
+
+    
+    .destaques{
+        padding: 15px 0px 20px;
+    }
+    .destaques .box{
+        margin: 0 0 0 10px;
+        width: 160px;
+        height: auto;
     }
  
      .fom-pedido > div {
          width: 90%;
          margin: 10% auto;
          padding: 15px 10px;
+     }
+
+     .modal-pedidos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+     }
+     .modal-pedidos input{
+        width: 83%;
+     }
+     .fazer-pedido{
+        margin-left: -53px;
+        top: 70%;
      }
 
      .fechar {

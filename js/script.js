@@ -1,65 +1,157 @@
 
-let headerWidth = document.querySelector(".header").clientHeight;
-console.log(headerWidth);
+ let incluirIdsUnicos = [];
+ const salvarId = [];
+ const pedidos= [];
+ let cont = 1;
 
-// document.querySelector(".grid-area-cards").style.margin-top = headerWidth;
+function escolherItens(elemento){
+    // captando o valor de texto do atributo data
+    let value_data_incremento = elemento.getAttribute('data-incremento');
+    console.log('value data :'+value_data_incremento);
 
+    let cta_name = elemento.getAttribute('name');
 
-function logoMobile(){
-    
-    document.querySelector(".menu-nav ul").classList.toggle('_open');
+    definirQuantidade(value_data_incremento, cta_name);
 }
 
+function definirQuantidade(value_data_incremento, cta_name){
+    //adiciona cada ID do box clicado ao array
+    salvarId.push({idDiv: value_data_incremento});
 
-function enviaDados(){
-    let peso = document.getElementById('peso').value;
-    let altura = document.getElementById('altura').value;
+    // percorremos todo array e removemos IDs duplicados
+    incluirIdsUnicos = new Set(salvarId.map(obj => obj.idDiv));
+    console.log(incluirIdsUnicos);
 
-    let res = (peso/(altura*altura)).toFixed(2);
+    let quantidadeItens = parseInt((document.querySelector(`${value_data_incremento} .gtd-pedido`)).value);
 
-    console.log(res);
-
-    if( peso && altura != '') {
-        if(res <= 18.5){
-            document.querySelector('.grid-area-cards .card2').classList.add('resultado-open');
-            document.querySelector('.box-card-2').style.display = 'none';
-            document.querySelector('.box-card-3').style.display = 'none';
-            document.querySelector('.box-card-4').style.display = 'none';
-
-            document.querySelector('.box-card-1 .res-calc').innerHTML = `Seu resultado e ${res}`
-
-        } else if (res > 18.5 && res < 24.9){
-            document.querySelector('.grid-area-cards .card2').classList.add('resultado-open');
-            document.querySelector('.box-card-1').style.display = 'none';
-            document.querySelector('.box-card-3').style.display = 'none';
-            document.querySelector('.box-card-4').style.display = 'none';
-
-            document.querySelector('.box-card-2 .res-calc').innerHTML = `Seu resultado e ${res}`
-
-        } else if (res > 25 && res < 30){
-            document.querySelector('.grid-area-cards .card2').classList.add('resultado-open');
-            document.querySelector('.box-card-1').style.display = 'none';
-            document.querySelector('.box-card-2').style.display = 'none';
-            document.querySelector('.box-card-4').style.display = 'none';
-
-            document.querySelector('.box-card-3 .res-calc').innerHTML = `Seu resultado e ${res}`
-
-        } else{
-            document.querySelector('.grid-area-cards .card2').classList.add('resultado-open');
-            document.querySelector('.box-card-1').style.display = 'none';
-            document.querySelector('.box-card-2').style.display = 'none';
-            document.querySelector('.box-card-3').style.display = 'none';
-
-            document.querySelector('.box-card-4 .res-calc').innerHTML = `Seu resultado e ${res}`
-
+    if (typeof(quantidadeItens) == "number"){
+        if(cta_name === "btn-qtd-mais"){
+            if(quantidadeItens >= 0)document.querySelector(`${value_data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeItens + 1));
         }
-    }else {
-        alert("Favor preencher os campos corretamente")
-    }
+        if(cta_name === "btn-qtd-menos"){
+            if(quantidadeItens > 0)document.querySelector(`${value_data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeItens - 1));
+
+            else {
+                document.querySelector(`${value_data_incremento} .gtd-pedido`).setAttribute('value', 0);
+                
+            }
+        }
+    }else{
+        throw "Tipo inválido";
+    }  
+}  
+
+function abrirModal() {
+
+        if(incluirIdsUnicos.size > 0) {
+            incluirIdsUnicos.forEach(function(value) {
+
+                let img = document.querySelector(`${value} .pratos`).innerHTML;
+                let title = document.querySelector(`${value} .title`).innerHTML;
+                let descritivo = document.querySelector(`${value} .descritivo`).innerHTML;
+                let quantidade = document.querySelector(`${value} .gtd-pedido`).value;
+                let price = document.querySelector(`${value} .price span`).innerHTML;
+        
+                const c = formatarMoeda(price, quantidade);
+                const price_real = c.replace('R$ ', '');
+                console.log(price_real);
+        
+                if(quantidade != 0){
+        
+                    let id = value.replace('#', '');
+        
+                    let pedidos = `
+                        <div class="box-item" id="${id}-modal">
+                            ${img}
+                            <div class="descricao-item">
+                            <strong>${title}</strong>
+                            <p>${descritivo}</p>
+                            <div class="seleciona-qtd">
+                                <button onclick="escolherItensModal(this)" data-incremento="${value}-modal" name="btn-qtd-menos" value="1"  class="intem-1 btn-qtd btn-qtd-menos">-</button>
+                                <input type="text" name="quantidade" value="${quantidade}" class="gtd-pedido">
+                                <button onclick="escolherItensModal(this)" data-incremento="${value}-modal" name="btn-qtd-mais" value="1"  class="intem-1 btn-qtd btn-qtd-mais">+</button>
+                                <p class="price" style="margin-left: 10px;">Total: R$ <span>${price_real}</span></p>
+                            </div>
+                        </div>
+                    </div>`;
+        
+                    document.querySelector('#pedido-itens').innerHTML += pedidos;
+                };
+                
+            });
+
+            //Abrir MODAL
+            document.querySelector("#fazer-pedido").style.display = 'block';
+
+        }else{
+            alert('Nenhum pedido selecionado');
+        }
+ }
+
+ function fecharModal(){
+    document.querySelector("#fazer-pedido").style.display = 'none';
+
+    let pedidos = ``;
+    document.querySelector('#pedido-itens').innerHTML = pedidos;
+ }
+
+function formatarMoeda(price, quantidade) {
+    const a = price.replace(',', '.');
+    // Formatando para o formato de moeda brasileira:
+    const formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
+    let b = a * quantidade;
+    const price_final = formatter.format(b);
+    return price_final;
 }
 
-// function recalcular(){
-//     window.
-// }
+function escolherItensModal(elemento){
+
+    // captando o valor de texto do atributo data
+    let data_incremento = elemento.getAttribute('data-incremento'); // Pegando id do box modal
+    let aux = data_incremento.replace('-modal', ''); //gerando o ID do box pagina inicial 
+
+    let quantidadeModal = parseInt((document.querySelector(`${data_incremento} .gtd-pedido`)).value); // pegando a quantidade de itens e convert INT
+    console.log('quantidade: '+quantidadeModal)
+    
+    let price = document.querySelector(`${aux} .price span`).innerHTML; // pegando o preço do produto
+    
+    let cta_name = elemento.getAttribute('name');
+
+    if(cta_name === "btn-qtd-mais"){
+
+        if(quantidadeModal > 0){
+            document.querySelector(`${data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeModal + 1));
+            document.querySelector(`${aux} .gtd-pedido`).setAttribute('value', (quantidadeModal + 1));
+
+            let price_atualizado = (formatarMoeda(price, quantidadeModal + 1)).replace('R$ ', '');
+            document.querySelector(`${data_incremento} .price span`).innerHTML = price_atualizado;
+        }
+    }
+    if(cta_name === "btn-qtd-menos"){
+        
+        if(quantidadeModal >= 1){
+            console.log('quantidade no if apos clique: '+quantidadeModal)
+            document.querySelector(`${data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeModal - 1));
+            document.querySelector(`${aux} .gtd-pedido`).setAttribute('value', (quantidadeModal - 1));
+
+            let price_atualizado = (formatarMoeda(price, quantidadeModal - 1)).replace('R$ ', '');
+            document.querySelector(`${data_incremento} .price span`).innerHTML = price_atualizado;
+        }else{
+            document.querySelector(`${data_incremento}`).style.display = 'none';
+            document.querySelector(`${data_incremento} .gtd-pedido`).setAttribute('value', 0);
+        }
+    }
+
+}
+  
+            
+
+
+
+ 
 
 

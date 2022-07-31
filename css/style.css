@@ -31,6 +31,7 @@ img{
     max-width: 1000px;
     min-height: 100px;
     height: 150px;
+    z-index: 999;
 }
 .logo{
    padding: 10px; 
@@ -87,19 +88,24 @@ img{
 
 .grid{
     margin-top: 150px;
-    padding: 10px 10px;
-    background-color: #55D8C1;
+    padding: 10px 10px 20px;
+    background-color: #fff;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
+    gap: 20px;
 }
+
 .grid .box {
-    height: 250px;
-    background-color: #AC7D88;
+    height: auto;
+    max-height: 300px;
+    background-color: #fff;
     padding: 5px;
     border-radius: 3px;
     text-align: center;
-    color: #fdfdd5;
+    position: relative;
+    color: #202013;
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(20,51,45,0.45); 
+    box-shadow: 0px 4px 10px 0px rgba(20,51,45,0.45);
 }
 
 .pratos img{
@@ -107,17 +113,27 @@ img{
     max-width: 300px;
 }
 
-.descritivo{
+.info-pratos{
     padding: 7px 10px 0;
 }
 
-.descritivo strong{
+.title{
     text-transform: uppercase;
     font-size: 14px;
     margin-bottom: 10px;
 }
 
-.descritivo p{
+.descritivo{
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.price{
+    position: sticky;
+    bottom: 8px;
+    display: block;
+    left: 45%;
     font-size: 12px;
     line-height: 1.4;
     margin-top: 10px;
@@ -138,45 +154,192 @@ img{
     width: 100%;
     min-height: 260px;
     display: flex;
-    padding: 10px 5px;
-    background-color: #55D8C1;
+    padding: 15px 5px 20px;
+    background-color: #fff;
     flex-direction: row;
     overflow: auto;
+    color: #202013;
+}
+
+.destaques{
+    scrollbar-color: yellow;
 }
 
 .destaques .box{
-    background-color: #AC7D88;
-    margin: 0 5px;
+    background-color: #fff;
+    margin: 0 10px;
     height: auto;
     width: 260px;
     flex-shrink: 0;
     object-fit: cover;
     position: sticky;
     top: 0;
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(20,51,45,0.45); 
+    box-shadow: 0px 4px 10px 0px rgba(20,51,45,0.45);
 }
 
-.fazer-pedido button {
+.seleciona_qtd_geral{
+    position: absolute !important;
+    top: -4px !important;
+    left: 5px !important;
+}
+
+.fazer-pedido {
     padding: 7px 11px;
     border-radius: 10px 10px 0px 0px;
     background: #1a3c40;
     position: fixed;
     top: 50%;
     color: #fdfdd5;
-    margin-left: -48px;
+    margin-left: -39px;
     transform: rotate(90deg);
     border-color: #fdfdd5;
     font-weight: bold;
+    text-decoration: none;
 }
 
-/* .semanais{
-    padding: 30px 10px 20px;
-    display: grid;
-    grid-template-columns: 30% 30%;
-} */
 .semanais h1{
     grid-column: 1 / span 2;
 }
 
+/* ====== Fazer pedido =====*/
+    .fom-pedido{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: rgba(0,0,0,0.8);
+        z-index: 99999;
+        display: none;
+
+    }
+
+      .fom-pedido > div {
+        width: 100%;
+        max-width: 400px;
+        position: relative;
+        margin: 10% auto;
+        padding: 15px 20px;
+        background: #fff;
+        border-radius: 9px;
+      }
+
+      .pedido-itens{
+        padding: 10px 0 30px;
+      }
+
+      .fechar {
+        position: absolute;
+        width: 30px;
+        right: -15px;
+        top: -20px;
+        text-align: center;
+        line-height: 30px;
+        margin-top: 5px;
+        background: #ff4545;
+        border-radius: 50%;
+        font-size: 16px;
+        color: #8d0000;
+      }
+
+      .box-item{
+        font-size: 14px;
+        display: grid;
+        grid-template-columns: 23% 72%;
+        grid-gap: 5px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px dotted black;
+      }
+
+      .box-item img{
+          max-width: 80px;
+      }
+
+      .descricao-item strong{
+          font-size: 14px;
+      }
+      .descricao-item p{
+        font-size: 12px;
+      }
+
+      .seleciona-qtd{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px auto 0;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+      .seleciona-qtd .btn-qtd{
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: space-around;
+      }
+
+      .seleciona-qtd input{
+        width: 20px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: space-around;
+        border: none;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        font-size: 12px;
+      }
+
+      .modal-pedidos input{
+        width: 45%;
+        margin-left: 6px;
+        padding: 2px 4px;
+        border: none;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+      }
+
+      .modal-pedidos button{
+        margin-top: 20px;
+        align-items: center;
+        text-align: center;
+        width: 100px;
+        padding: 5px 10px;
+        border-radius: 7px;
+        cursor: pointer;
+      }
+      #enviar-pedido{
+        background: transparent;
+        border: 2px solid #777e4d;
+        color: #000;
+      }
+      #add-itens{
+        background: transparent;
+        border: 2px solid #8e8c8a;
+        color: #000;
+      }
+      #enviar-pedido:hover{
+        color: #fff;
+        background-color: #777e4d;
+        border: 2px solid #777e4d;
+      }
+      #add-itens:hover{
+        color: #fff;
+        background: #8e8c8a;
+        border: 2px solid #8e8c8a;
+      }
+    /* .fom-pedido input[type="text"]{
+        padding: 10px 5px;
+        border: none;
+        border-bottom: 1px solid black;
+    } */
 
 @media (max-width: 800px){
    .header{
@@ -188,11 +351,10 @@ img{
    }
    .menu-nav{
        z-index: 999;
-       padding: 10px 10px;
+       padding: 0px 10px 10px;
    }
    .menu-nav h1{
        font-size: 2rem;
-       text-align: left;
    }
    .menu-nav ul{
        display: none;
@@ -215,6 +377,7 @@ img{
        display: block;
        background-color: #fdfdd5;
    }
+   
    .footer p {
         font-size: 1.5rem;
     }
@@ -225,14 +388,60 @@ img{
 
     .grid{
         margin-top: 210px;
-        display: block;
+        grid-template-columns: 1fr 1fr;
     }
     .grid .box {
         height: auto;
         min-height: 200px;
         margin-bottom: 10px;
     }
-    .descritivo {
-        padding: 7px 25px 0;
+    .info-pratos {
+        padding: 7px 4px 0;
+    }
+    .title{
+        font-size: 11px;
+    }
+
+    .descritivo{
+        font-size: 11px;
+    }
+
+    .fom-pedido > div {
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+        margin: 10% auto;
+        padding: 15px 10px;
+        background: #fff;
     }
 }
+
+@media (max-width: 520px){
+
+    .box-item{
+        grid-template-columns: 24% 76%;
+    }
+
+    .grid .box{
+        max-height: none;
+    }
+
+    .pratos img{
+        max-width: none;
+    }
+ 
+     .fom-pedido > div {
+         width: 90%;
+         margin: 10% auto;
+         padding: 15px 10px;
+     }
+
+     .fechar {
+        width: 25px;
+        right: 2px;
+        top: -3px;
+        line-height: 25px;
+        margin-top: 5px;
+        border-radius: 0;
+    }
+ }

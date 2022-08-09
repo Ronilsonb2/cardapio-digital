@@ -124,7 +124,7 @@ img{
     left: 0;
     right: 0;
     transition: 0.5s ease-out;
-}
+    z-index: 990;
 
 
 .pratos img{
@@ -217,6 +217,7 @@ img{
     font-weight: bold;
     text-decoration: none;
     overflow: hidden;
+    z-index: 998;
 }
 
 .fazer-pedido img{

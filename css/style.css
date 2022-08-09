@@ -76,7 +76,7 @@ img{
     color: #fdfdd5;
     background-color: #1a3c40;
     text-align: center;
-    padding: 20px 0 40px;
+    padding: 20px 0 30px;
 }
 
 .footer p{
@@ -99,10 +99,11 @@ img{
 }
 
 .grid .box {
+    display: grid;
     height: auto;
     max-height: 300px;
     background-color: #fff;
-    padding: 5px;
+    padding: 6px 5px 10px;
     border-radius: 3px;
     text-align: center;
     position: relative;
@@ -111,35 +112,51 @@ img{
     box-shadow: 0px 4px 10px 0px rgba(20,51,45,0.45);
 }
 
+.box:hover{
+    /* width: 90%;
+    max-width: 300px; */
+    transform: scale(1.1);
+    justify-content: center;
+    transform-origin: top;
+    margin: 0 auto;
+    position: relative;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    transition: 0.5s ease-out;
+}
+
+
 .pratos img{
     width: 100%;
     max-width: 300px;
 }
 
 .info-pratos{
-    padding: 7px 5px 0;
+    padding: 7px 2px 0;
 }
 
 .title{
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 11px;
     margin-bottom: 10px;
 }
 
 .descritivo{
     font-size: 12px;
-    line-height: 1.4;
+    line-height: 1.2;
     margin-top: 10px;
 }
+
+
 
 .price{
     position: sticky;
     bottom: 8px;
     display: block;
-    left: 45%;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.4;
-    margin-top: 10px;
+    margin-left: 20px;
 }
 
 #semanais {
@@ -187,24 +204,32 @@ img{
     box-shadow: 0px 4px 10px 0px rgba(20,51,45,0.45);
 }
 
-.seleciona_qtd_geral{
+/* .seleciona_qtd_geral{
     position: absolute !important;
     top: -4px !important;
     left: 5px !important;
-}
+} */
 
 .fazer-pedido {
-    padding: 7px 11px;
-    border-radius: 10px 10px 0px 0px;
-    background: #1a3c40;
     position: fixed;
-    top: 50%;
     color: #fdfdd5;
-    margin-left: -39px;
-    transform: rotate(90deg);
     border-color: #fdfdd5;
     font-weight: bold;
     text-decoration: none;
+    overflow: hidden;
+}
+
+.fazer-pedido img{
+    transform: translateX(-110px);
+    width: 80%;
+    padding: 0;
+    margin: 0;
+    transition: ease-out 0.6s;
+}
+.fazer-pedido img:hover{
+    transition: ease-out 0.6s;
+    transform: translateX(0px);
+    width: 80%;
 }
 
 .semanais h1{
@@ -274,36 +299,38 @@ img{
         font-size: 12px;
       }
 
+      .price_auxiliar{
+        width: 0;
+        display: none;
+      }
+
       .seleciona-qtd{
+        /* background: #897575eb; */
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 10px auto 0;
         position: relative;
-        top: 0;
-        left: 0;
+        color: #202013;
       }
 
       .seleciona-qtd .btn-qtd{
-        width: 20px;
+        width: 12px;
+        color: #202013;
         height: 20px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        justify-content: space-around;
+        background: transparent;
+        border: none;
       }
 
       .seleciona-qtd input{
         width: 20px;
-        height: 18px;
-        display: flex;
-        align-items: center;
+        height: 20px;
+        color: #202013;
+        background: transparent;
         text-align: center;
-        justify-content: space-around;
         border: none;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
         font-size: 12px;
+        border: none;
       }
 
       .modal-pedidos input{
@@ -351,10 +378,10 @@ img{
     } */
 
 @media (max-width: 800px){
-   .header{
+   /* .header{
        display: block;
        height: auto;
-   }
+   } */
    ._open{
        display: block !important;
    }
@@ -426,6 +453,22 @@ img{
 }
 
 @media (max-width: 520px){
+    .logo{
+        padding: 0;
+    }
+    .logo img{
+        width: 90%;
+        max-width: 120px;
+    }
+
+    .menu-nav h1{
+        text-align: left;
+    }
+
+    .header {
+        grid-template-columns: 40% 60%;
+    }
+
 
     .box-item{
         grid-template-columns: 24% 76%;
@@ -468,8 +511,8 @@ img{
         width: 83%;
      }
      .fazer-pedido{
-        margin-left: -53px;
-        top: 70%;
+        /* margin-left: -53px;
+        top: 70%; */
      }
 
      .fechar {

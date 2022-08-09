@@ -1,6 +1,6 @@
-let dados_cardapio = [
+const dados_cardapio = [
     {
-      "categ": "ofertas_do_dia",
+      "categoria": "ofertas_do_dia",
       "pratos": [
         {
             nome: "Lagosta ao thermidor",
@@ -53,7 +53,7 @@ let dados_cardapio = [
       ]
     },
     {
-      "categ": "semanais",
+      "categoria": "semanais",
       "pratos": [
         {
             nome: "Lagosta ao thermidor",
@@ -100,7 +100,7 @@ let dados_cardapio = [
       ]
     },
     {
-      "categ": "sobremesas",
+      "categoria": "sobremesas",
       "pratos": [
         {
             nome: "Frozen Yogurt",
@@ -135,26 +135,25 @@ let dados_cardapio = [
       ]
     }
   ];
-  
+
 let array_pratos;
 let prod;
-let aux= [];
 
-for(i in dados_cardapio) {
+for(let i in dados_cardapio) {
     
     prod = dados_cardapio[i];
-    // console.log(prod.categ, prod.pratos);
+    // console.log(prod.categoria, prod.pratos);
     // console.log("total de elementos: "+prod.pratos.length);
 
     let num_id;
 
     let num = 1;
     
-    array_pratos = (prod.categ, prod.pratos);
+    array_pratos = (prod.categoria, prod.pratos);
     
-    if((prod.categ == 'ofertas_do_dia') && (prod.pratos.length > 0)){
+    if((prod.categoria == 'ofertas_do_dia') && (prod.pratos.length > 0)){
         
-        for(e in prod.pratos){
+        for(let e in prod.pratos){
 
             let conteudo = `<div class="box" id="oferta-destaque-${num}">
                 <div class="pratos">
@@ -163,12 +162,14 @@ for(i in dados_cardapio) {
                 <div class="info-pratos">
                     <h3 class="title">${prod.pratos[e].nome}</h3>
                     <p class="descritivo">${prod.pratos[e].descricao}</p>
-                    <p class="price">R$ <span>${prod.pratos[e].preco}</span></p>
                 </div>
                 <div class="seleciona-qtd seleciona_qtd_geral">
                     <button onclick="escolherItens(this)" data-incremento="#oferta-destaque-${num}" name="btn-qtd-menos" class="btn-qtd btn-qtd-menos">-</button>
                     <input type="text" name="quantidade" value="0" class="gtd-pedido">
                     <button onclick="escolherItens(this)" data-incremento="#oferta-destaque-${num}"  name="btn-qtd-mais" class="btn-qtd btn-qtd-mais">+</button>
+
+                    <p class="price">R$ <span>${prod.pratos[e].preco}</span></p>
+                    <span class="price_auxiliar">${prod.pratos[e].preco}</span>
                 </div>
             </div>`;
             document.querySelector('#section-1').innerHTML += conteudo;
@@ -178,13 +179,12 @@ for(i in dados_cardapio) {
         
         // console.log("va;or de num id " + num_id);
     }
-
-    if((prod.categ == 'semanais') && (prod.pratos.length > 0)){
+    if((prod.categoria == 'semanais') && (prod.pratos.length > 0)){
 
         let title_diarios = `<h1>Pratos diários</h1><div class="destaques"  id="pratos_diarios"></div>`;
         document.querySelector('#semanais').innerHTML += title_diarios;
 
-        for(x in prod.pratos){
+        for(let x in prod.pratos){
             let conteudo = `
                 <div class="box" id="ofertas-diaria-${num}">
                     <div class="pratos">
@@ -193,25 +193,26 @@ for(i in dados_cardapio) {
                     <div class="info-pratos">
                         <h3 class="title">${prod.pratos[x].nome}</h3>
                         <p class="descritivo">${prod.pratos[x].descricao}</p>
-                        <p class="price">R$ <span>${prod.pratos[x].preco}</span></p>
                     </div>
                     <div class="seleciona-qtd seleciona_qtd_geral">
                         <button onclick="escolherItens(this)" data-incremento="#ofertas-diaria-${num}" name="btn-qtd-menos" class="btn-qtd btn-qtd-menos">-</button>
                         <input type="text" name="quantidade" value="0" class="gtd-pedido">
                         <button onclick="escolherItens(this)" data-incremento="#ofertas-diaria-${num}" name="btn-qtd-mais" class="btn-qtd btn-qtd-mais">+</button>
+
+                        <p class="price">R$ <span>${prod.pratos[x].preco}</span></p>
+                        <span class="price_auxiliar">${prod.pratos[x].preco}</span>
                     </div>
                 </div>`;
             document.querySelector('#pratos_diarios').innerHTML += conteudo;
             num++;
         }
     }
-
-    if((prod.categ == 'sobremesas') && (prod.pratos.length > 0)){
+    if((prod.categoria == 'sobremesas') && (prod.pratos.length > 0)){
 
         let title_sobremesas = `<h1>Sobremesas</h1><div class="grid sobremesas"  id="sobremesas"></div>`;
         document.querySelector('.sobremesas').innerHTML += title_sobremesas;
 
-        for(y in prod.pratos){
+        for(let y in prod.pratos){
             let conteudo = `
                 <div class="box" id="sobremesas-${num}">
                     <div class="pratos">
@@ -220,12 +221,14 @@ for(i in dados_cardapio) {
                     <div class="info-pratos">
                         <h3 class="title">${prod.pratos[y].nome}</h3>
                         <p class="descritivo">${prod.pratos[y].descricao}</p>
-                        <p class="price">R$ <span>${prod.pratos[y].preco}</span></p>
                     </div>
                     <div class="seleciona-qtd seleciona_qtd_geral">
                         <button onclick="escolherItens(this)" data-incremento="#sobremesas-${num}" name="btn-qtd-menos" class="btn-qtd btn-qtd-menos">-</button>
                         <input type="text" name="quantidade" value="0" class="gtd-pedido">
                         <button onclick="escolherItens(this)" data-incremento="#sobremesas-${num}" name="btn-qtd-mais" class="btn-qtd btn-qtd-mais">+</button>
+
+                        <p class="price">R$ <span>${prod.pratos[y].preco}</span></p>
+                        <span class="price_auxiliar">${prod.pratos[y].preco}</span>
                     </div>
                 </div>`;
             document.querySelector('#sobremesas').innerHTML += conteudo;
@@ -233,3 +236,6 @@ for(i in dados_cardapio) {
         }
     }
 }
+
+
+// export default dados_cardapio;

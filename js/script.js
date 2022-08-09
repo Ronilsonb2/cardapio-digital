@@ -1,20 +1,28 @@
+// import dados_cardapio from './dados_produtos.js';
 
-let headerHeight = document.querySelector(".header").clientHeight;
+const c = (el) => document.querySelector(el);
+
+let headerHeight = c(".header").clientHeight;
 console.log(`${headerHeight}px`);
 
-document.querySelector(".conteudo").style.marginTop = `${headerHeight}px`;
+c(".conteudo").style.marginTop = `${headerHeight}px`;
+c('.fazer-pedido').style.top = `${headerHeight - 4}px`;
 
- let incluirIdsUnicos = [];
- const salvarId = [];
- const pedidos= [];
- let cont = 1;
+let incluirIdsUnicos = [];
+const salvarId = [];
+const pedidos= [];
+let cont = 1;
+
+let quantidadeItens;
+let price_atualizado;
+let cta_name;
 
 function escolherItens(elemento){
     // captando o valor de texto do atributo data
     let value_data_incremento = elemento.getAttribute('data-incremento');
     console.log('value data :'+value_data_incremento);
 
-    let cta_name = elemento.getAttribute('name');
+    cta_name = elemento.getAttribute('name');
 
     definirQuantidade(value_data_incremento, cta_name);
 }
@@ -25,20 +33,34 @@ function definirQuantidade(value_data_incremento, cta_name){
 
     // percorremos todo array e removemos IDs duplicados
     incluirIdsUnicos = new Set(salvarId.map(obj => obj.idDiv));
-    console.log(incluirIdsUnicos);
 
-    let quantidadeItens = parseInt((document.querySelector(`${value_data_incremento} .gtd-pedido`)).value);
+    const price = c(`${value_data_incremento} .price_auxiliar`).innerHTML; // pegando o preço do produto
+
+    quantidadeItens = parseInt((c(`${value_data_incremento} .gtd-pedido`)).value);
+
+    price_atualizado; 
 
     if (typeof(quantidadeItens) == "number"){
         if(cta_name === "btn-qtd-mais"){
-            if(quantidadeItens >= 0)document.querySelector(`${value_data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeItens + 1));
+            if(quantidadeItens >= 0){
+                c(`${value_data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeItens + 1));
+
+                price_atualizado = (formatarMoeda(price, quantidadeItens + 1)).replace('R$ ', '');
+                c(`${value_data_incremento} .price span`).innerHTML = price_atualizado;
+            }
         }
         if(cta_name === "btn-qtd-menos"){
-            if(quantidadeItens > 0)document.querySelector(`${value_data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeItens - 1));
+            if(quantidadeItens >= 1){
+                c(`${value_data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeItens - 1));
 
+                price_atualizado = (formatarMoeda(price, quantidadeItens - 1)).replace('R$ ', '');
+                c(`${value_data_incremento} .price span`).innerHTML = price_atualizado;
+
+            }
             else {
-                document.querySelector(`${value_data_incremento} .gtd-pedido`).setAttribute('value', 0);
-                
+                c(`${value_data_incremento} .gtd-pedido`).setAttribute('value', 0);
+
+                c(`${value_data_incremento} .price span`).innerHTML = price;
             }
         }
     }else{
@@ -52,15 +74,15 @@ function abrirModal() {
 
             incluirIdsUnicos.forEach(function(value) {
 
-                let img = document.querySelector(`${value} .pratos`).innerHTML;
-                let title = document.querySelector(`${value} .title`).innerHTML;
-                let descritivo = document.querySelector(`${value} .descritivo`).innerHTML;
-                let quantidade = document.querySelector(`${value} .gtd-pedido`).value;
-                let price = document.querySelector(`${value} .price span`).innerHTML;
+                let img = c(`${value} .pratos`).innerHTML;
+                let title = c(`${value} .title`).innerHTML;
+                let descritivo = c(`${value} .descritivo`).innerHTML;
+                let quantidade = c(`${value} .gtd-pedido`).value;
+                let price = c(`${value} .price span`).innerHTML;
         
-                const c = formatarMoeda(price, quantidade);
-                const price_real = c.replace('R$ ', '');
-                console.log(price_real);
+                // const c = formatarMoeda(price, quantidade);
+                // const price_real = c.replace('R$ ', '');
+                console.log(price);
         
                 if(quantidade != 0){
         
@@ -76,18 +98,18 @@ function abrirModal() {
                                 <button onclick="escolherItensModal(this)" data-incremento="${value}-modal" name="btn-qtd-menos" value="1"  class="intem-1 btn-qtd btn-qtd-menos">-</button>
                                 <input type="text" name="quantidade" value="${quantidade}" class="gtd-pedido">
                                 <button onclick="escolherItensModal(this)" data-incremento="${value}-modal" name="btn-qtd-mais" value="1"  class="intem-1 btn-qtd btn-qtd-mais">+</button>
-                                <p class="price" style="margin-left: 10px;">Total: R$ <span>${price_real}</span></p>
+                                <p class="price" style="margin-left: 10px;">Total: R$ <span>${price}</span></p>
                             </div>
                         </div>
                     </div>`;
         
-                    document.querySelector('#pedido-itens').innerHTML += pedidos;
+                    c('#pedido-itens').innerHTML += pedidos;
                 };
                 
             });
 
             //Abrir MODAL
-            document.querySelector("#fazer-pedido").style.display = 'block';
+            c("#fazer-pedido").style.display = 'block';
 
         }else{
             alert('Nenhum pedido selecionado');
@@ -95,14 +117,15 @@ function abrirModal() {
  }
 
  function fecharModal(){
-    document.querySelector("#fazer-pedido").style.display = 'none';
+    c("#fazer-pedido").style.display = 'none';
 
     let pedidos = ``;
-    document.querySelector('#pedido-itens').innerHTML = pedidos;
+    c('#pedido-itens').innerHTML = pedidos;
  }
 
 function formatarMoeda(price, quantidade) {
     const a = price.replace(',', '.');
+    
     // Formatando para o formato de moeda brasileira:
     const formatter = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
@@ -120,39 +143,47 @@ function escolherItensModal(elemento){
     let data_incremento = elemento.getAttribute('data-incremento'); // Pegando id do box modal
     let aux = data_incremento.replace('-modal', ''); //gerando o ID do box pagina inicial 
 
-    let quantidadeModal = parseInt((document.querySelector(`${data_incremento} .gtd-pedido`)).value); // pegando a quantidade de itens e convert INT
-    console.log('quantidade: '+quantidadeModal)
+    let quantidadeModal = parseInt((c(`${data_incremento} .gtd-pedido`)).value); // pegando a quantidade de itens e convert INT
+
     
-    let price = document.querySelector(`${aux} .price span`).innerHTML; // pegando o preço do produto
+    const price = c(`${aux} .price_auxiliar`).innerHTML; // pegando o preço do produto
     
-    let cta_name = elemento.getAttribute('name');
+    cta_name = elemento.getAttribute('name');
+
+    price_atualizado;
 
     if(cta_name === "btn-qtd-mais"){
-
         if(quantidadeModal > 0){
-            document.querySelector(`${data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeModal + 1));
-            document.querySelector(`${aux} .gtd-pedido`).setAttribute('value', (quantidadeModal + 1));
+            c(`${data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeModal + 1));
+            c(`${aux} .gtd-pedido`).setAttribute('value', (quantidadeModal + 1));
 
-            let price_atualizado = (formatarMoeda(price, quantidadeModal + 1)).replace('R$ ', '');
-            document.querySelector(`${data_incremento} .price span`).innerHTML = price_atualizado;
+            price_atualizado = (formatarMoeda(price, quantidadeModal + 1)).replace('R$ ', '');
+            c(`${data_incremento} .price span`).innerHTML = price_atualizado;
         }
     }
     if(cta_name === "btn-qtd-menos"){
-        
         if(quantidadeModal >= 1){
             console.log('quantidade no if apos clique: '+quantidadeModal)
-            document.querySelector(`${data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeModal - 1));
-            document.querySelector(`${aux} .gtd-pedido`).setAttribute('value', (quantidadeModal - 1));
+            c(`${data_incremento} .gtd-pedido`).setAttribute('value', (quantidadeModal - 1));
+            c(`${aux} .gtd-pedido`).setAttribute('value', (quantidadeModal - 1));
 
-            let price_atualizado = (formatarMoeda(price, quantidadeModal - 1)).replace('R$ ', '');
-            document.querySelector(`${data_incremento} .price span`).innerHTML = price_atualizado;
+            price_atualizado = (formatarMoeda(price, quantidadeModal - 1)).replace('R$ ', '');
+            c(`${data_incremento} .price span`).innerHTML = price_atualizado;
         }else{
-            document.querySelector(`${data_incremento}`).style.display = 'none';
-            document.querySelector(`${data_incremento} .gtd-pedido`).setAttribute('value', 0);
+            c(`${data_incremento}`).style.display = 'none';
+            c(`${data_incremento} .gtd-pedido`).setAttribute('value', 0);
         }
     }
 
 }
+
+// function mostrarDetalhes(elemento) {
+//     let a = elemento.offsetParent;
+//     let id_card= a.id;
+
+//     c(`#${id_card} .descritivo`).classList.toggle("_open");
+//     console.log(id_card);
+// }
   
             
 

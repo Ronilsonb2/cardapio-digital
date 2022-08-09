@@ -120,11 +120,11 @@ img{
     transform-origin: top;
     margin: 0 auto;
     position: relative;
-    z-index: 9999;
+    z-index: 990;
     left: 0;
     right: 0;
     transition: 0.5s ease-out;
-    z-index: 990;
+}
 
 
 .pratos img{

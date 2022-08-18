@@ -43,7 +43,7 @@ img{
 }
 .menu-nav h1{
     color: #fdfdd5;
-    text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, -13px 3px 1px rgba(253,253,213,0.07);
+    text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, -8px 3px 1px rgba(253,253,213,0.07);
     text-align: center;
     font-size: 4rem;
     font-family: 'Lobster', cursive;
@@ -115,11 +115,12 @@ img{
 .box:hover{
     /* width: 90%;
     max-width: 300px; */
-    transform: scale(1.1);
+    transform: scale(1.05);
     justify-content: center;
     transform-origin: top;
     margin: 0 auto;
     position: relative;
+    background: #a6888842;
     z-index: 990;
     left: 0;
     right: 0;
@@ -151,12 +152,12 @@ img{
 
 
 .price{
-    position: sticky;
-    bottom: 8px;
-    display: block;
-    font-size: 11px;
-    line-height: 1.4;
+    font-size: 9px;
     margin-left: 20px;
+}
+
+.price span{
+    font-size: 14px;
 }
 
 #semanais {
@@ -239,6 +240,7 @@ img{
 
 /* ====== Fazer pedido =====*/
     .fom-pedido{
+        overflow: scroll;
         position: fixed;
         top: 0;
         right: 0;
@@ -268,13 +270,13 @@ img{
       .fechar {
         position: absolute;
         width: 30px;
-        right: -15px;
-        top: -20px;
+        right: 3px;
+        top: -3px;
         text-align: center;
         line-height: 30px;
         margin-top: 5px;
         background: #ff4545;
-        border-radius: 50%;
+        border-radius: 10px;
         font-size: 16px;
         color: #8d0000;
       }
@@ -297,6 +299,7 @@ img{
           font-size: 14px;
       }
       .descricao-item p{
+        padding: 4px 0;
         font-size: 12px;
       }
 
@@ -316,7 +319,8 @@ img{
       }
 
       .seleciona-qtd .btn-qtd{
-        width: 12px;
+        font-size: 20px;
+        width: 30px;
         color: #202013;
         height: 20px;
         background: transparent;
@@ -324,23 +328,23 @@ img{
       }
 
       .seleciona-qtd input{
-        width: 20px;
+        font-size: 15px;
+        width: 25px;
+        height: 20px;
         height: 20px;
         color: #202013;
         background: transparent;
         text-align: center;
-        border: none;
-        font-size: 12px;
         border: none;
       }
 
       .modal-pedidos input{
         width: 45%;
         margin-left: 6px;
-        padding: 2px 4px;
+        padding: 5px 4px;
         border: none;
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
+        border-bottom: 2px solid #b3a5a5;
+        border-left: 2px solid #b3a5a5;
       }
 
       .modal-pedidos button{
@@ -372,11 +376,11 @@ img{
         background: #8e8c8a;
         border: 2px solid #8e8c8a;
       }
-    /* .fom-pedido input[type="text"]{
-        padding: 10px 5px;
-        border: none;
-        border-bottom: 1px solid black;
-    } */
+
+      #pedido-itens .price{
+        font-size: 11px;
+      }
+
 
 @media (max-width: 800px){
    /* .header{
@@ -426,6 +430,7 @@ img{
     .grid{
         grid-template-columns: 1fr 1fr;
         gap: 10px 20px;
+        padding: 5px 10px 50px;
     }
     .grid .box {
         height: auto;
@@ -522,6 +527,6 @@ img{
         top: -3px;
         line-height: 25px;
         margin-top: 5px;
-        border-radius: 0;
+        color: white;
     }
  }

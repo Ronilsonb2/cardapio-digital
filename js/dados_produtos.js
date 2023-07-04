@@ -106,82 +106,52 @@ const dados_cardapio = [
         "title": "Sobremesas",
         "itens": [
             {
-                nome: "Lagosta ao thermidor",
-                descricao: "Lagosta feita com creme de leite, cenoura, cebola, conhaque e queijo",
-                imagem: "assets/prato1.jpg",
+                nome: "Torta holandesa",
+                descricao: "Delícia de chocolate e creme",
+                imagem: "assets/sobremesa1.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Doce de coco",
+                descricao: "Sabor tropical em cada pedaço",
+                imagem: "assets/sobremesa2.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
-            },
-            {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Pudim de leite condensado",
+                descricao: "Doce tradicional e irresistível",
+                imagem: "assets/sobremesa3.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
-            },
-            {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Pavê de leite Ninho",
+                descricao: "Delicioso e cremoso com sabor de infância",
+                imagem: "assets/sobremesa1.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
-            },
-            {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Doce de coco",
+                descricao: "Sabor tropical em cada pedaço",
+                imagem: "assets/sobremesa2.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
-            },
-            {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Pudim de leite condensado",
+                descricao: "Doce tradicional e irresistível",
+                imagem: "assets/sobremesa3.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
-            },
-            {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Pavê de leite Ninho",
+                descricao: "Delicioso e cremoso com sabor de infância",
+                imagem: "assets/sobremesa1.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
+                nome: "Pavê de leite Ninho",
+                descricao: "Delicioso e cremoso com sabor de infância",
+                imagem: "assets/sobremesa2.jpg",
+                preco: "19,90"
             }
           ]
     },

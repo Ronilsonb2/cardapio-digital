@@ -190,81 +190,57 @@ const dados_cardapio = [
         "title": "Bebidas",
         "itens": [
             {
-                nome: "Lagosta ao thermidor",
-                descricao: "Lagosta feita com creme de leite, cenoura, cebola, conhaque e queijo",
-                imagem: "assets/prato1.jpg",
+                nome: "Elixir Carmesim",
+                descricao: "Intenso sabor frutado, toque especiado",
+                imagem: "assets/vinho1.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Reserva Serenidade",
+                descricao: "Elegância floral, final persistente",
+                imagem: "assets/vinho2.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
+                nome: "Safra Majestosa",
+                descricao: " Complexidade cativante, taninos suaves",
+                imagem: "assets/vinho3.jpg",
                 preco: "24,90"
             },
             {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Vinho da Alvorada",
+                descricao: "Refrescante cítrico, sabor tropical",
+                imagem: "assets/vinho2.jpg",
                 preco: "19,90"
             },
             {
                 nome: "Espaguete ao frutos do mar",
                 descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
+                imagem: "assets/vinho3.jpg",
                 preco: "24,90"
             },
             {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Reserva Serenidade",
+                descricao: "Elegância floral, final persistente",
+                imagem: "assets/vinho2.jpg",
                 preco: "19,90"
             },
             {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
+                nome: "Safra Majestosa",
+                descricao: " Complexidade cativante, taninos suaves",
+                imagem: "assets/vinho3.jpg",
                 preco: "24,90"
             },
             {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
+                nome: "Vinho da Alvorada",
+                descricao: "Refrescante cítrico, sabor tropical",
+                imagem: "assets/vinho2.jpg",
                 preco: "19,90"
             },
             {
                 nome: "Espaguete ao frutos do mar",
                 descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
-            },
-            {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
-                preco: "19,90"
-            },
-            {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
-                preco: "24,90"
-            },
-            {
-                nome: "Feijão tropeiro",
-                descricao: "Deliciosa, acompanha arroz, feijão, couve refogada e fritas",
-                imagem: "assets/prato2.jpg",
-                preco: "19,90"
-            },
-            {
-                nome: "Espaguete ao frutos do mar",
-                descricao: "Espaguete com camarão, mexilhões, lula e polvo ao molho do chef.",
-                imagem: "assets/prato3.jpg",
+                imagem: "assets/vinho3.jpg",
                 preco: "24,90"
             }
           ]

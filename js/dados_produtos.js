@@ -54,7 +54,7 @@ const dados_cardapio = [
       ]
     },
     {
-        "categoria": "semanais",
+        "categoria": "itens-diario",
         "title": "Itens diários",
         "itens": [
             {
@@ -229,6 +229,12 @@ for(let i in dados_cardapio) {
     array_itens = (prod.categoria, prod.itens);
     
     if((prod.categoria == prod.categoria) && (prod.itens.length > 0)){
+
+        let menu_txt = `<li> <a href="#${prod.categoria}">${prod.title}</a></li>`;
+        document.querySelector('#menu-itens').innerHTML += menu_txt;
+        console.log(`menus =   ${menu_txt}`);
+
+
 
         let title = `<h1 class="title_sessoes">${prod.title}</h1><div class="grid"  id="${prod.categoria}"></div>`;
         document.querySelector('.conteudo').innerHTML += title;

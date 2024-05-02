@@ -2,13 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 :root {
-    --cor-turquesa: #4c7c80;
+    --cor-body: #F2E3DB;
+    --cor-txt: #E86A33;
+    --cor-secundaria: #41644A;
+
     --cor-cinza-chumbo: #898d93;
-    --cor-lavanda: #ECD8E0;
     --cor-azul-marinho: #3e4451;
-    --cor-magenta-escuro: #C75C71;
+    --cor-magenta-escuro: #41644A;
     --cor-vermelho-escuro: #77061c;
-    --cor-marrom-escuro: #560F20;
+    --cor-marrom-escuro: #263A29;
 
     --cor-branco: #FFFFFF;
 }
@@ -21,8 +23,12 @@
     list-style: none;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
-    background-color: var(--cor-lavanda);
+    background-color: var(--cor-body);
 }
 
 img{
@@ -50,6 +56,8 @@ img{
     z-index: 900;
 }
 .logo{
+    display: flex;
+    justify-content: center;
    padding: 20px 10px; 
 }
 .logo img{
@@ -57,22 +65,21 @@ img{
     max-width: 120px;
 }
 .logo h1{
-    color: #fdfdd5;
+    color: var(--cor-txt);
     text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c, -8px 3px 1px rgba(253,253,213,0.07);
     text-align: center;
-    font-size: 30px;
-    line-height: 34px;
+    font-size: 60px;
+    line-height: 64px;
     font-family: 'Lobster', cursive;
 
     min-height: 30px;
-    height: 40px;
 }
 
 .header .menu {
     padding: 5px 10px;
     min-height: 20px;
     height: 30px;
-    background-color: var(--cor-magenta-escuro);
+    background-color: var(--cor-secundaria);
     display: flex;
     flex-direction: row;
 }
@@ -83,21 +90,23 @@ img{
     justify-content: center;
     align-items: center;
 }
-.menu ul li{
-    color: #fdfdd5;
+.menu ul li a{
+    color: var(--cor-body);
     font-family: 'Lobster', cursive;
     margin: 0 15px;
     cursor: pointer;
     font-size: 20px;
+
+    text-decoration: none;
 }
-.menu ul li:hover{
-    border-bottom: 2px solid #fdfdd5;
+.menu ul li a:hover{
+    border-bottom: 2px solid var(--cor-body);
 }
 .menu-mobile{
     display: none;
 }
 .footer{
-    color: #fdfdd5;
+    color: var(--cor-txt);
     background-color: var(--cor-marrom-escuro);
     text-align: center;
     padding: 20px 0 30px;
@@ -111,7 +120,7 @@ img{
 /* ======OFERTAS ========*/
 .grid{
     padding: 10px 10px 50px;
-    background-color: var(--cor-lavanda);
+    background-color: var(--cor-body);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 12px;
@@ -131,14 +140,13 @@ img{
     border: 1px solid #d9d9d9;
 }
 .box:hover{
-    /* width: 90%;
-    max-width: 300px; */
     transform: scale(1.02);
     justify-content: center;
     transform-origin: top;
     margin: 0 auto;
     position: relative;
-    background: #a6888842;
+    background: rgb(39 58 42 / 15%);
+    border: 1px solid var(--cor-secundaria);
     z-index: 88;
     left: 0;
     right: 0;
@@ -166,12 +174,15 @@ img{
     font-size: 14px;
     line-height: 18px;
     margin-bottom: 10px;
+    font-weight: 900;
+    color: var(--cor-marrom-escuro);
 }
 
 .descritivo{
     font-size: 14px;
     line-height: 16px;
     margin-top: 10px;
+    color: var(--cor-marrom-escuro);
 }
 
 
@@ -230,7 +241,7 @@ img{
     min-height: 260px;
     display: flex;
     padding: 15px 5px 20px;
-    background-color: var(--cor-lavanda);
+    background-color: var(--cor-body);
     border-top: 1px solid #d9d9d9;
     flex-direction: row;
     overflow: auto;
@@ -280,11 +291,17 @@ img{
 
 
 .fazer-pedido .qtd-itens-carrinho {
-    font-size: 12px;
-    right: 10px;
-    top: -4px;
-    font-weight: 800;
     position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    font-size: 12px;
+    line-height: 21px;
+    padding: 1px 0 0;
+    text-align: center;
+    border-radius: 23px;
+    background-color: #ff841f;
+    font-weight: 600;
     z-index: 9999;
     color: var(--cor-branco);
 }
@@ -370,13 +387,13 @@ img{
         align-items: center;
         margin: 10px auto 0;
         position: relative;
-        color: #202013;
+        color: var(--cor-marrom-escuro);
       }
 
       .seleciona-qtd .btn-qtd{
         font-size: 20px;
         width: 30px;
-        color: #202013;
+        color: var(--cor-marrom-escuro);
         height: 20px;
         background: transparent;
         border: none;
@@ -387,7 +404,7 @@ img{
         width: 25px;
         height: 20px;
         height: 20px;
-        color: #202013;
+        color: var(--cor-txt);
         background: transparent;
         text-align: center;
         border: none;
@@ -438,12 +455,21 @@ img{
 
 @media (max-width: 800px){
 
+    .logo{
+       padding: 10px 10px; 
+    }
+
+    .logo h1 {
+        font-size: 32px;
+        text-align: left;
+    }
+
    .menu-mobile{
         display: block;
     }
 
     .header .menu {
-        height: auto;
+        height: 100vh;
         padding: 20px 0px;
         display: none;
     }
